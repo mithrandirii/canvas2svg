@@ -1157,18 +1157,16 @@
             canvas = this.__document.createElement("canvas");
             canvas.width = dw;
             canvas.height = dh;
-            var imageSmoothingEnabled = this.imageSmoothingEnabled;
             context = canvas.getContext("2d");
-            context.imageSmoothingEnabled = imageSmoothingEnabled;
-            context.mozImageSmoothingEnabled = imageSmoothingEnabled;
-            context.oImageSmoothingEnabled = imageSmoothingEnabled;
-            context.webkitImageSmoothingEnabled = imageSmoothingEnabled;
+            context.imageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
             context.drawImage(image, sx, sy, sw, sh, 0, 0, dw, dh);
             image = canvas;
 
             svgImage.setAttribute("transform", translateDirective);
-            svgImage.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href",
-                image.toDataURL());
+            svgImage.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", image.toDataURL());
             parent.appendChild(svgImage);
         }
     };
