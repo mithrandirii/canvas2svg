@@ -1,6 +1,6 @@
 Canvas2Svg [![Build Status](https://travis-ci.org/gliffy/canvas2svg.svg?branch=master)](https://travis-ci.org/gliffy/canvas2svg)
 ==========
-This library turns your Canvas into SVG using javascript. In other words, this library lets you build an SVG document 
+This library turns your Canvas into SVG using javascript. In other words, this library lets you build an SVG document
 using the canvas api. Why use it?
 * You have a canvas drawing you want to persist as an SVG file.
 * You like exporting things.
@@ -12,7 +12,7 @@ http://gliffy.github.io/canvas2svg/
 
 How it works
 ==========
-We create a mock 2d canvas context. Use the canvas context like you would on a normal canvas. As you call methods, we 
+We create a mock 2d canvas context. Use the canvas context like you would on a normal canvas. As you call methods, we
 build up a scene graph in SVG. Yay!
 
 Usage
@@ -41,7 +41,7 @@ npm install
 npm test
 ```
 
-To run tests against Chrome and Firefox, call karma directly. This is not the default npm test due to the limited 
+To run tests against Chrome and Firefox, call karma directly. This is not the default npm test due to the limited
 browser selection in travis.
 ```
 npm install karma-cli -g
@@ -72,11 +72,11 @@ install gulp globally if you haven't done so already
 ```
 npm install -g gulp
 ```
-Then run the following to update playground.html and testrunner.html 
+Then run the following to update playground.html and testrunner.html
 ```
 gulp
 ```
-You should now be able to select your new example from playground.html or see it run in testrunner.html 
+You should now be able to select your new example from playground.html or see it run in testrunner.html
 
 If you find a bug, or want to add functionality, please add a new test case and include it with your pull request.
 
@@ -100,13 +100,14 @@ N.B. You may not need node-canvas for some simple operations when using jsdom >=
 
 Updates
 ==========
+- v1.0.21 Fix issue ctx.drawImage incorrectly smoothing the image and allow user to pass in ctx argument
 - v1.0.20 Fix issue with mixing transforms with path commands
 - v1.0.19 Fix __parseFont to not crash
 - v1.0.18 clip was not working, the path never made it to the clip area
 - v1.0.17 Fix bug with drawing in an empty context. Fix image translation problem. Fix globalAlpha issue.
 - v1.0.16 Add npm publishing support, bower file and optimize for arcs with no angles.
 - v1.0.15 Setup travis, add testharness and debug playground, and fix regression for __createElement refactor
-- v1.0.14 bugfix for gradients, move __createElement to scoped createElement function, so all classes have access. 
+- v1.0.14 bugfix for gradients, move __createElement to scoped createElement function, so all classes have access.
 - v1.0.13 set paint order before stroke and fill to make them behavior like canvas
 - v1.0.12 Implementation of ctx.prototype.arcTo.
 - v1.0.11 call lineTo instead moveTo in ctx.arc, fixes closePath issue and straight line issue
@@ -117,9 +118,9 @@ Updates
 - v1.0.6 basic support for text baseline (contribution from KoKuToru)
 - v1.0.5 fixes for #5 and #6 (with contributions from KoKuToru)
 - v1.0.4 generate ids that start with a letter
-- v1.0.3 fixed #4 where largeArcFlag was set incorrectly in some cases 
+- v1.0.3 fixed #4 where largeArcFlag was set incorrectly in some cases
 - v1.0.2 Split up rgba values set in fill/stroke to allow illustrator import support.
-- v1.0.1 Allow C2S to be called as a function. https://github.com/gliffy/canvas2svg/issues/2 
+- v1.0.1 Allow C2S to be called as a function. https://github.com/gliffy/canvas2svg/issues/2
 - v1.0.0 Initial release
 
 Misc
