@@ -2,7 +2,8 @@
   "name": "canvas2svg",
   "version": "1.0.21",
   "description": "canvas2svg",
-  "main": "canvas2svg.js",
+  "module": "canvas2svg.js",
+  "types": "canvas2svg.d.ts",
   "homepage": "http://gliffy.github.io/canvas2svg/",
   "directories": {
     "test": "test"
