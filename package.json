@@ -1,10 +1,10 @@
 {
-  "name": "canvas2svg",
-  "version": "1.0.21",
+  "name": "@bokeh/canvas2svg",
+  "version": "1.0.22",
   "description": "canvas2svg",
   "module": "canvas2svg.js",
   "types": "canvas2svg.d.ts",
-  "homepage": "http://gliffy.github.io/canvas2svg/",
+  "homepage": "https://github.com/bokeh/canvas2svg",
   "directories": {
     "test": "test"
   },

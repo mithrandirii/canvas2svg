@@ -1,4 +1,4 @@
-declare module "canvas2svg" {
+declare module "@bokeh/canvas2svg" {
   export type SVGRenderingContext2D = CanvasRenderingContext2D & {
     getSvg(): SVGSVGElement
     getSerializedSvg(fix_named_entities: boolean): string
