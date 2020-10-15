@@ -2,6 +2,7 @@ declare module "@bokeh/canvas2svg" {
   export type SVGRenderingContext2D = CanvasRenderingContext2D & {
     getSvg(): SVGSVGElement
     getSerializedSvg(fix_named_entities: boolean): string
+    drawImageSvg(image: SVGSVGElement, dx: number, dy: number, dw: number, dh: number): void
   }
 
   export type SVGRenderingOptions = {

@@ -1176,6 +1176,74 @@
         }
     };
 
+    ctx.prototype.drawImageSvg = function () {
+        //convert arguments to a real array
+        var args = Array.prototype.slice.call(arguments),
+            image=args[0],
+            dx, dy, dw, dh, sx=0, sy=0, sw, sh, parent, svg, defs, group,
+            currentElement, svgImage, canvas, context, id;
+
+        if (args.length === 3) {
+            dx = args[1];
+            dy = args[2];
+            sw = image.width;
+            sh = image.height;
+            dw = sw;
+            dh = sh;
+        } else if (args.length === 5) {
+            dx = args[1];
+            dy = args[2];
+            dw = args[3];
+            dh = args[4];
+            sw = image.width;
+            sh = image.height;
+        } else if (args.length === 9) {
+            sx = args[1];
+            sy = args[2];
+            sw = args[3];
+            sh = args[4];
+            dx = args[5];
+            dy = args[6];
+            dw = args[7];
+            dh = args[8];
+        } else {
+            throw new Error("Inavlid number of arguments passed to drawImage: " + arguments.length);
+        }
+
+        parent = this.__closestGroupOrSvg();
+        currentElement = this.__currentElement;
+        var translateDirective = "translate(" + dx + ", " + dy + ")";
+        if (image instanceof SVGSVGElement) {
+            if (image.childNodes && image.childNodes.length > 1) {
+                var orgWidth = parseFloat(image.getAttribute("width"));
+                var orgHeight = parseFloat(image.getAttribute("height"));
+                image.setAttribute("width", dw);
+                image.setAttribute("height", dh);
+                var scaleW = dw / orgWidth;
+                var scaleH = dh / orgHeight;
+                defs = image.childNodes[0];
+                while(defs.childNodes.length) {
+                    id = defs.childNodes[0].getAttribute("id");
+                    this.__ids[id] = id;
+                    this.__defs.appendChild(defs.childNodes[0]);
+                }
+                group = image.childNodes[1];
+                if (group) {
+                    //save original transform
+                    var originTransform = group.getAttribute("transform");
+                    var transformDirective;
+                    if (originTransform) {
+                        transformDirective = originTransform+" "+translateDirective;
+                    } else {
+                        transformDirective = translateDirective;
+                    }
+                    group.setAttribute("transform", transformDirective + " scale(" + scaleW + ", " + scaleH +")");
+                    parent.appendChild(group);
+                }
+            }
+        }
+    };
+
     /**
      * Generates a pattern tag
      */
